@@ -1,4 +1,8 @@
 <template name="App_home">
-  {{> hello}}
-  {{> info}}
+
+  {{#if isInRole 'admin' 'admin-group'}}
+      {{> hello}}
+      {{> info}}
+  {{/if}}
+
 </template>
