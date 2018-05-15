@@ -28,28 +28,13 @@
                     </div>
                 </li>
 
-                {{#if isInRole 'admin' 'oven'}}
-                  <li class="{{isActiveRoute regex='logPage'}}">
-                    <a href={{pathFor 'App.log'}}><i class="fa fa-clock-o"></i> <span class="nav-label">{{_ "Log"}}</span></a>
-                  </li>
-
-                  <li class="{{isActiveRoute regex='usersList|usersAdd|usersUpdate'}}">
-                      <a href="#"><i class="fa fa-users"></i> <span class="nav-label">{{_ "Users"}}</span> <span class="fa arrow"></span></a>
-                      <ul class="nav nav-second-level collapse {{isActiveRoute regex='usersList|usersAdd|usersUpdate' className='in'}}">
-                          <li class="{{isActiveRoute regex='usersList'}}"><a href="{{pathFor 'App.users.list'}}">{{_ "List"}}</a></li>
-                          <li class="{{isActiveRoute regex='usersAdd'}}"><a href={{pathFor 'App.users.add'}}>{{_ "Add"}}</a></li>
-                      </ul>
-                  </li>
-
-                  <li class="{{isActiveRoute regex='ingredientsList|ingredientsAdd'}}">
-                      <a href="#"><i class="fa fa-users"></i> <span class="nav-label">{{_ "Ingredients"}}</span> <span class="fa arrow"></span></a>
-                      <ul class="nav nav-second-level collapse {{isActiveRoute regex='ingredientsList|ingredientsAdd' className='in'}}">
-                          <li class="{{isActiveRoute regex='ingredientsList'}}"><a href="{{pathFor 'App.ingredients.list'}}">{{_ "List"}}</a></li>
-                          <li class="{{isActiveRoute regex='ingredientsAdd'}}"><a href={{pathFor 'App.ingredients.add'}}>{{_ "Add"}}</a></li>
-                      </ul>
-                  </li>
-                {{/if}}
-
+                <li class="{{isActivePath regex='/users/list|/users/add|/users/update'}}">
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">{{_ 'Users'}}</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse {{isActivePath regex='/users/list|/users/add|/users/update' className='in'}}">
+                        <li class="{{isActivePath regex='/users/list'}}"><a href="/users/list">{{_ 'List'}}</a></li>
+                        <li class="{{isActivePath regex='/users/add'}}"><a href="/users/add">{{_ 'Add'}}</a></li>
+                    </ul>
+                </li>
 
                 <li class="{{isActivePath regex='dashboard1|dashboard2|dashboard3|dashboard4l|dashboard5'}}">
                     <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Dashboards</span> <span class="fa arrow"></span></a>

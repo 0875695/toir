@@ -7,6 +7,9 @@ import '../../ui/layouts/blank/blank.js';
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/login/login.js';
+import '../../ui/pages/users/users-add.js';
+import '../../ui/pages/users/users-list.js';
+import '../../ui/pages/users/users-update.js';
 
 let allUsers = FlowRouter.group({});
 let managerUsers = FlowRouter.group({
@@ -38,3 +41,24 @@ allUsers.notFound = {
     BlazeLayout.render('App_body', { content: 'App_notFound' });
   },
 };
+
+adminUsers.route('/users/list', {
+    name: 'App.users.list',
+    action: function() {
+        BlazeLayout.render("App_body", {content: "usersList"});
+    }
+});
+
+adminUsers.route('/users/add', {
+    name: 'App.users.add',
+    action: function() {
+        BlazeLayout.render("App_body", {content: "usersAdd"});
+    }
+});
+
+adminUsers.route('/users/update', {
+    name: 'App.users.update',
+    action: function() {
+        BlazeLayout.render("App_body", {content: "usersUpdate"});
+    }
+});
