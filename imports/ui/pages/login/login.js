@@ -12,7 +12,7 @@ Template.login.events({
     let password = $('#fldPassword').val();
     Meteor.loginWithPassword(login, password, function(err){
       if(err){
-        toastr['error'](err.reason, 'Authentification error')
+        toastr['error'](TAPi18n.__(err.reason), TAPi18n.__('Authentication error'))
         console.log(err.reason)
       }else{
         FlowRouter.go('App.home');
