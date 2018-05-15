@@ -1,8 +1,8 @@
 import './body.html';
-import '../../components/common/navigation.html';
-import '../../components/common/footer.html';
-import '../../components/common/top-navbar.html';
-import '../../components/common/right-sidebar.html';
+import '../../components/common/navigation.js';
+import '../../components/common/footer.js';
+import '../../components/common/top-navbar.js';
+import '../../components/common/right-sidebar.js';
 
 Template.App_body.rendered = function(){
 

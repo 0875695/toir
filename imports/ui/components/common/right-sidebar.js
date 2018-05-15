@@ -1,3 +1,4 @@
+import './right-sidebar.html';
 Template.rightSidebar.rendered = function(){
 
     // Initialize slimscroll for right sidebar
