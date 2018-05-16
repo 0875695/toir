@@ -1,7 +1,7 @@
 Accounts.validateNewUser(function (user) {
   let loggedInUser = Meteor.user();
 
-  if (Roles.userIsInRole(loggedInUser, ['admin'], 'toir-group')) {
+  if (Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
     return true;
   }
 

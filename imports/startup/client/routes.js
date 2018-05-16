@@ -27,10 +27,13 @@ let adminUsers = FlowRouter.group({
          redirect('/login');
       } else {
          let loggedInUser = Meteor.user();
-         if (!loggedInUser ||
-            !Roles.userIsInRole(loggedInUser, ['admin'], 'toir-group')) {
-            redirect('/notfound')
-         }
+
+// TODO: раскомментировать перед деплоем
+
+         // if (!loggedInUser ||
+         //    !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
+         //    redirect('/notfound')
+         // }
       }
    }]
 });
@@ -88,7 +91,7 @@ let adminUsers = FlowRouter.group({
          }
       });
 
-      adminUsers.route('/users/update', {
+      adminUsers.route('/users/update/:uId', {
          name: 'App.users.update',
          action: function () {
             BlazeLayout.render("App_body", {

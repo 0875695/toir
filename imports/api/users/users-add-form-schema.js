@@ -1,6 +1,5 @@
 import SimpleSchema from 'simpl-schema';
 SimpleSchema.extendOptions(['autoform']);
-SimpleSchema.extendOptions(['quickForm']);
 
 export const usersAddFormSchema = new SimpleSchema({
    name: {

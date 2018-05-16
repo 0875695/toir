@@ -1,7 +1,5 @@
 import './users-add-form-com.html';
-import {
-   usersAddFormSchema
-} from '/imports/api/users/users-add-form-schema.js';
+import {usersAddFormSchema} from '/imports/api/users/users-add-form-schema.js';
 
 Template.usersAddFormCom.helpers({
    getUsersAddFormSchema() {

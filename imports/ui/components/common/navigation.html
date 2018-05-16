@@ -27,7 +27,7 @@
                         IN+
                     </div>
                 </li>
-                {{#if isInRole 'admin' 'toir-group'}}
+                {{#if isInRole 'admin' 'toir'}}
                 <li class="{{isActivePath regex='/users/list|/users/add|/users/update'}}">
                     <a href="#"><i class="fa fa-users"></i> <span class="nav-label">{{_ 'Users'}}</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse {{isActivePath regex='/users/list|/users/add|/users/update' className='in'}}">
