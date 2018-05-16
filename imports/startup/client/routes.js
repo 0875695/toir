@@ -11,6 +11,8 @@ import '../../ui/pages/users/users-add.js';
 import '../../ui/pages/users/users-list.js';
 import '../../ui/pages/users/users-update.js';
 
+FlowRouter.wait();
+
 let allUsers = FlowRouter.group({});
 
 let managerUsers = FlowRouter.group({
@@ -30,10 +32,10 @@ let adminUsers = FlowRouter.group({
 
 // // TODO: раскомментировать перед деплоем
 //
-//          if (!loggedInUser ||
-//             !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
-//             redirect('/notfound')
-//          }
+         if (!loggedInUser ||
+            !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
+            redirect('/App_notFound')
+         }
       }
    }]});
 // Set up all routes in the app
@@ -97,4 +99,10 @@ adminUsers.route('/users/update/:uId', {
          content: "usersUpdate"
       });
    }
+});
+
+Tracker.autorun(function(){
+    if(Roles.subscription.ready()){
+        FlowRouter.initialize();
+    }
 });
