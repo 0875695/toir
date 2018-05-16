@@ -1,7 +1,4 @@
-// import { FlowRouter } from 'meteor/kadira:flow-router';
-// import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
-// Import needed templates
 import '../../ui/layouts/body/body.js';
 import '../../ui/layouts/blank/blank.js';
 import '../../ui/pages/home/home.js';
@@ -56,15 +53,6 @@ allUsers.route('/login', {
       });
    }
 });
-
-// allUsers.route('/notfound', {
-//    name: 'App.notfound',
-//    action: function () {
-//       BlazeLayout.render("App_body", {
-//          content: "notFound"
-//       });
-//    }
-// });
 
 FlowRouter.notFound = {
    action() {

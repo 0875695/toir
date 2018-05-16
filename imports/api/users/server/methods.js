@@ -1,5 +1,6 @@
 import {usersAddFormSchema} from '../users-add-form-schema.js';
 import {usersUpdateFormSchema} from '../users-update-form-schema.js';
+import {log} from '../../log';
 
 Meteor.methods({
    'users.add' (data) {
@@ -26,9 +27,14 @@ Meteor.methods({
          }
       });
 
-      if (data.roles.length > 0) {
+      let RolesText = '';
+
+      if (data.roles && data.roles.length > 0) {
          Roles.addUsersToRoles(id, data.roles, 'toir');
+         RolesText = ', пользователю назначены роли ' + data.roles.join(', ');
       }
+
+      log.info('Добавлен пользователь' + data.name + ' (' + data.email + ')' + RolesText, {type: 'users'}, this.userId);
    },
    'users.update' (data) {
       usersUpdateFormSchema.validate(data);
@@ -40,12 +46,17 @@ Meteor.methods({
       };
       console.log(data);
       Meteor.users.update(data._id, {$set: {'profile.name': data.name}});
+      log.info('Для пользователя ' + data._id + ' изменено имя на ' + data.name,  {type: 'users'}, this.userId);
+
       if(data.password && data.confirmPassword && data.password === data.confirmPassword){
           Accounts.setPassword(data._id, data.password);
+          log.info('Для пользователя ' + data._id + ' изменен пароль',  {type: 'users'}, this.userId);
       };
+
       Meteor.users.update(data._id, {$unset: {'roles': ''}});
-      if (data.roles.length > 0) {
+      if (data.roles && data.roles.length > 0) {
          Roles.addUsersToRoles(data._id, data.roles, 'toir');
+         log.info('Для пользователя ' + data._id + ' установлены роли ' + data.roles.join(', '),  {type: 'users'}, this.userId);
       };
    }
 });

@@ -19,9 +19,9 @@ Template.usersListCom.helpers({
       if (this.roles && this.roles.toir.length > 0) {
          return this.roles.toir.map(function (role) {
             return TAPi18n.__(role);
-         }).join(',');
+         }).join(', ');
       } else {
-         return '';
+         return 'Пользователи';
       }
    }
 });
