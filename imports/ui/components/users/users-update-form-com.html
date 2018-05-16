@@ -1,7 +1,14 @@
 <template name="usersUpdateFormCom">
   {{#if Template.subscriptionsReady}}
-  <h2>{{getUserName}}</h2>
-    {{> quickForm schema=getUsersUpdateFormSchema id="usersUpdateForm" doc=getUser type="method" meteormethod="users.update" buttonContent=getSubmitButtonText }}
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="ibox">
+          <div class="ibox-content">
+              {{> quickForm schema=getUsersUpdateFormSchema id="usersUpdateForm" doc=getUser type="method" meteormethod="users.update" buttonContent=getSubmitButtonText }}
+          </div>
+        </div>
+      </div>
+    </div>
   {{else}}
     <div class="spiner-example">
         <div class="sk-spinner sk-spinner-chasing-dots">

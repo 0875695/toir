@@ -1,4 +1,11 @@
 <template name="usersAddFormCom">
-  <h2>UserAddForm</h2>
-  {{> quickForm schema=getUsersAddFormSchema id="usersAddForm" type="method" meteormethod="users.add" buttonContent=getSubmitButtonText }}
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="ibox">
+        <div class="ibox-content">
+          {{> quickForm schema=getUsersAddFormSchema id="usersAddForm" type="method" meteormethod="users.add" buttonContent=getSubmitButtonText }}
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

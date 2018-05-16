@@ -1,5 +1,5 @@
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { BlazeLayout } from 'meteor/kadira:blaze-layout';
+// import { FlowRouter } from 'meteor/kadira:flow-router';
+// import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 // Import needed templates
 import '../../ui/layouts/body/body.js';
@@ -28,74 +28,73 @@ let adminUsers = FlowRouter.group({
       } else {
          let loggedInUser = Meteor.user();
 
-// TODO: раскомментировать перед деплоем
-
-         // if (!loggedInUser ||
-         //    !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
-         //    redirect('/notfound')
-         // }
+// // TODO: раскомментировать перед деплоем
+//
+//          if (!loggedInUser ||
+//             !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
+//             redirect('/notfound')
+//          }
       }
-   }]
+   }]});
+// Set up all routes in the app
+managerUsers.route('/', {
+   name: 'App.home',
+   action() {
+      BlazeLayout.render('App_body', {
+         content: 'App_home'
+      });
+   },
 });
-      // Set up all routes in the app
-      managerUsers.route('/', {
-         name: 'App.home',
-         action() {
-            BlazeLayout.render('App_body', {
-               content: 'App_home'
-            });
-         },
-      });
 
-      allUsers.route('/login', {
-         name: 'App.login',
-         action: function () {
-            BlazeLayout.render("blankLayout", {
-               content: "login"
-            });
-         }
+allUsers.route('/login', {
+   name: 'App.login',
+   action: function () {
+      BlazeLayout.render("blankLayout", {
+         content: "login"
       });
+   }
+});
 
-      allUsers.route('/notfound', {
-         name: 'App.notfound',
-         action: function () {
-            BlazeLayout.render("App_body", {
-               content: "notFound"
-            });
-         }
+// allUsers.route('/notfound', {
+//    name: 'App.notfound',
+//    action: function () {
+//       BlazeLayout.render("App_body", {
+//          content: "notFound"
+//       });
+//    }
+// });
+
+FlowRouter.notFound = {
+   action() {
+      BlazeLayout.render('App_body', {
+         content: 'App_notFound'
       });
+   }
+};
 
-      allUsers.notFound = {
-         action() {
-            BlazeLayout.render('App_body', {
-               content: 'App_notFound'
-            });
-         },
-      };
-
-      adminUsers.route('/users/list', {
-         name: 'App.users.list',
-         action: function () {
-            BlazeLayout.render("App_body", {
-               content: "usersList"
-            });
-         }
+adminUsers.route('/users/list', {
+   name: 'App.users.list',
+   action: function () {
+      BlazeLayout.render("App_body", {
+         content: "usersList"
       });
+   }
+});
 
-      adminUsers.route('/users/add', {
-         name: 'App.users.add',
-         action: function () {
-            BlazeLayout.render("App_body", {
-               content: "usersAdd"
-            });
-         }
+adminUsers.route('/users/add', {
+   name: 'App.users.add',
+   action: function () {
+      BlazeLayout.render("App_body", {
+         content: "usersAdd"
       });
+   }
+});
 
-      adminUsers.route('/users/update/:uId', {
-         name: 'App.users.update',
-         action: function () {
-            BlazeLayout.render("App_body", {
-               content: "usersUpdate"
-            });
-         }
+adminUsers.route('/users/update/:uId', {
+   name: 'App.users.update',
+   action: function () {
+      BlazeLayout.render("App_body", {
+         content: "usersUpdate"
       });
+   }
+});
