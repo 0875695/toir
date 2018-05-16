@@ -1,4 +1,5 @@
 import {usersAddFormSchema} from '../users-add-form-schema.js';
+import {usersUpdateFormSchema} from '../users-update-form-schema.js';
 
 Meteor.methods({
    'users.add' (data) {
@@ -6,7 +7,7 @@ Meteor.methods({
 
       let loggedInUser = Meteor.user();
       if (!loggedInUser ||
-         !Roles.userIsInRole(loggedInUser, ['admin'], 'toir-group')) {
+         !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
          throw new Meteor.Error(403, 'Access denied');
       }
       if (Meteor.users.findOne({
@@ -26,7 +27,25 @@ Meteor.methods({
       });
 
       if (data.roles.length > 0) {
-         Roles.addUsersToRoles(id, data.roles, 'toir-group');
+         Roles.addUsersToRoles(id, data.roles, 'toir');
       }
+   },
+   'users.update' (data) {
+      usersUpdateFormSchema.validate(data);
+
+      let loggedInUser = Meteor.user();
+      if (!loggedInUser ||
+         !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
+         throw new Meteor.Error(403, 'Access denied');
+      };
+      console.log(data);
+      Meteor.users.update(data._id, {$set: {'profile.name': data.name}});
+      if(data.password && data.confirmPassword && data.password === data.confirmPassword){
+          Accounts.setPassword(data._id, data.password);
+      };
+      Meteor.users.update(data._id, {$unset: {'roles': ''}});
+      if (data.roles.length > 0) {
+         Roles.addUsersToRoles(data._id, data.roles, 'toir');
+      };
    }
 });
