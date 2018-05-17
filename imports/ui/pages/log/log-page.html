@@ -1,0 +1,17 @@
+<template name="logPage">
+    {{> pageHeading title='Журнал действий пользователя' links=getLinks }}
+      <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+          <div class="ibox">
+            <div class="ibox-content"><div class="form-group" id="data_1">
+              <label class="font-normal">{{_ 'Choose date to show log on that day'}}</label>
+              <div class="date">
+                <input id="filterDate" type="date" class="form-control" value="{{getDate}}">
+              </div>
+            </div>
+            {{> logList date=getSelectedDate}}
+          </div>
+        </div>
+      </div>
+    </div>
+</template>

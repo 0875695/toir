@@ -1,8 +1,7 @@
-import { Logger }      from 'meteor/ostrio:logger';
+import { Logger } from 'meteor/ostrio:logger';
 import { LoggerMongo } from 'meteor/ostrio:loggermongo';
 
-// Initialize Logger:
+export  const ToirLog = new Mongo.Collection('toirLog');
 export const log = new Logger();
 
-// Initialize and enable LoggerMongo with default settings:
-(new LoggerMongo(log)).enable();
+(new LoggerMongo(log, {collection: ToirLog})).enable();

@@ -11,8 +11,7 @@ Template.navigation.events({
   'click .close-canvas-menu' : function(){
       $('body').toggleClass("mini-navbar");
   },
-  'click .mnu-logout': function(e) {
-    console.log(e);
+  'click .mnu-logout': function(e) {  
     Meteor.logout(function() {
       FlowRouter.go('App.login');
     });

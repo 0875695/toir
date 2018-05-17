@@ -7,6 +7,7 @@ import '../../ui/pages/login/login.js';
 import '../../ui/pages/users/users-add.js';
 import '../../ui/pages/users/users-list.js';
 import '../../ui/pages/users/users-update.js';
+import '../../ui/pages/log/log-page.js';
 
 FlowRouter.wait();
 
@@ -21,20 +22,19 @@ let managerUsers = FlowRouter.group({
 });
 
 let adminUsers = FlowRouter.group({
-   triggersEnter: [function (context, redirect) {
-      if (!Meteor.loggingIn() && !Meteor.userId()) {
-         redirect('/login');
-      } else {
-         let loggedInUser = Meteor.user();
+    triggersEnter: [function (context, redirect) {
+       if (!Meteor.loggingIn() && !Meteor.userId()) {
+          redirect('/login');
+       } else {
+          let loggedInUser = Meteor.user();
 
-// // TODO: раскомментировать перед деплоем
-//
-         if (!loggedInUser ||
-            !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
-            redirect('/App_notFound')
-         }
-      }
-   }]});
+          if (!loggedInUser ||
+             !Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
+             redirect('/App_notFound')
+          }
+       }
+    }]
+ });
 // Set up all routes in the app
 managerUsers.route('/', {
    name: 'App.home',
@@ -89,8 +89,17 @@ adminUsers.route('/users/update/:uId', {
    }
 });
 
+adminUsers.route('/log', {
+   name: 'App.log',
+   action: function () {
+      BlazeLayout.render("App_body", {
+         content: "logPage"
+      });
+   }
+});
+
 Tracker.autorun(function(){
-    if(Roles.subscription.ready()){
-        FlowRouter.initialize();
+    if(Roles.subscription.ready() && !FlowRouter._initialized){
+          FlowRouter.initialize();      
     }
 });
