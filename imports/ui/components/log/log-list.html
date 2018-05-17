@@ -2,7 +2,7 @@
   <ul class="sortable-list connectList agile-list" id="todo">
     {{#each getLogMessages}}
 
-      <li class={{getItemListClass this.level}}>
+      <li class={{getItemListClass this.level}} >
         {{message}}
         <div class="agile-detail">
             <i class="fa fa-clock-o"></i> {{dateFormat date}} &nbsp; {{getUserInfo}}

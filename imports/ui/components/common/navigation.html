@@ -28,16 +28,17 @@
                     </div>
                 </li>
                 {{#if isInRole 'admin' 'toir'}}
-                <li class="{{isActivePath regex='/users/list|/users/add|/users/update'}}">
-                    <a href="/users/list"><i class="fa fa-users"></i> <span class="nav-label">{{_ 'Users'}}</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse {{isActivePath regex='/users/list|/users/add|/users/update' className='in'}}">
-                        <li class="{{isActivePath regex='/users/list'}}"><a href="/users/list">{{_ 'List'}}</a></li>
-                        <li class="{{isActivePath regex='/users/add'}}"><a href="/users/add">{{_ 'Add'}}</a></li>
-                    </ul>
-                </li>
-
+                
                 <li class="{{isActivePath regex='/log'}}">
                     <a href="/log"><i class="fa fa-clock-o"></i> <span class="nav-label">{{_ 'Log'}}</span></a>
+                </li>
+
+                <li class="{{isActivePath regex='users/list|users/add|users/update'}}">
+                    <a href="/users/list"><i class="fa fa-users"></i> <span class="nav-label">{{_ 'Users'}}</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse {{isActivePath regex='users/list|users/add|users/update' className='in'}}">
+                        <li class="{{isActivePath regex='users/list'}}"><a href="/users/list">{{_ 'List'}}</a></li>
+                        <li class="{{isActivePath regex='users/add'}}"><a href="/users/add">{{_ 'Add'}}</a></li>
+                    </ul>
                 </li>
 
                 {{/if}}
