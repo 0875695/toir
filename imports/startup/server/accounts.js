@@ -1,9 +1,14 @@
-Accounts.validateNewUser(function (user) {
-  let loggedInUser = Meteor.user();
+if(Meteor.users.find().length > 0) {
 
-  if (Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
-    return true;
-  }
+  Accounts.validateNewUser(function (user) {
 
-  throw new Meteor.Error(403, "Not authorized to create new users");
-});
+    console.log(user);
+    let loggedInUser = Meteor.user();
+
+    if (Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {
+      return true;
+    }
+      throw new Meteor.Error(403, "Not authorized to create new users");
+
+    });
+}
