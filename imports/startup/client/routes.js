@@ -8,6 +8,8 @@ import '../../ui/pages/users/users-add.js';
 import '../../ui/pages/users/users-list.js';
 import '../../ui/pages/users/users-update.js';
 import '../../ui/pages/log/log-page.js';
+import '../../ui/pages/alarmlog/alarmlog-add.js';
+import '../../ui/pages/alarmlog/alarmlog-list.js';
 
 FlowRouter.wait();
 
@@ -41,6 +43,24 @@ managerUsers.route('/', {
    action() {
       BlazeLayout.render('App_body', {
          content: 'App_home'
+      });
+   },
+});
+
+managerUsers.route('/alarmlog/add', {
+   name: 'App.alarmlog.add',
+   action() {
+      BlazeLayout.render('App_body', {
+         content: 'alarmLogAdd'
+      });
+   },
+});
+
+managerUsers.route('/alarmlog/list', {
+   name: 'App.alarmlog.list',
+   action() {
+      BlazeLayout.render('App_body', {
+         content: 'alarmLogList'
       });
    },
 });
@@ -100,6 +120,6 @@ adminUsers.route('/log', {
 
 Tracker.autorun(function(){
     if(Roles.subscription.ready() && !FlowRouter._initialized){
-          FlowRouter.initialize();      
+          FlowRouter.initialize();
     }
 });

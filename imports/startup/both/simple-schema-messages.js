@@ -1,5 +1,4 @@
 import SimpleSchema from 'simpl-schema';
-
 SimpleSchema.extendOptions(['autoform']);
 
 const regExpMessages = [
@@ -35,12 +34,12 @@ const defaultMessages = {
       noDecimal: '{{{label}}} должно быть целым числом',
       notAllowed: '{{{value}}} не допустимое значение',
       expectedType: '{{{label}}} должно быть типа {{dataType}}',
-      passwordMismatch: 'Пароли должны совпадать'
+      passwordMismatch: 'Пароли должны совпадать',
       regEx({
         label,
         regExp,
       }) {
-
+        // See if there's one where exp matches this expression
         let msgObj;
         if (regExp) {
           msgObj = _.find(regExpMessages, (o) => o.exp && o.exp.toString() === regExp);

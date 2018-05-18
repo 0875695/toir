@@ -1,0 +1,39 @@
+<template name="alarmLogListCom">
+  <h3>alarmLogListCom</h3>
+
+  <div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover dataTables-example" >
+      <thead>
+      <tr>
+          <th>{{_ 'Date'}}</th>
+          <th>{{_ 'Equipment'}}</th>
+          <th>{{_ 'Service'}}</th>
+          <th>{{_ 'DownTime'}}</th>
+          <th>{{_ 'Cause'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      {{#each getAlarmLog}}
+        <tr>
+            <td >{{dateFormat date}}</td>
+            <td>{{equipment}}</td>
+            <td>{{_ service}}</td>
+            <td>{{downtime}}</td>
+            <td>{{cause}}</td>
+          </tr>
+      {{/each}}
+
+      </tbody>
+      <tfoot>
+      <tr>
+          <th>{{_ 'Date'}}</th>
+          <th>{{_ 'Equipment'}}</th>
+          <th>{{_ 'Service'}}</th>
+          <th>{{_ 'DownTime'}}</th>
+          <th>{{_ 'Cause'}}</th>
+      </tr>
+      </tfoot>
+  </table>
+  </div>
+</template>

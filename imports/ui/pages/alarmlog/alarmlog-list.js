@@ -1,0 +1,1 @@
+import './alarmlog-list.html';

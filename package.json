@@ -8,6 +8,9 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
     "bcrypt": "^2.0.1",
+    "datatables.net": "^1.10.16",
+    "datatables.net-bs": "^1.10.16",
+    "datatables.net-buttons": "^1.5.1",
     "jquery": "~2",
     "meteor-node-stubs": "^0.3.2",
     "simpl-schema": "^0.3.2"

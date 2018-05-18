@@ -35,5 +35,16 @@
   "Log": "Журнал",
   "admin":"Администратор",
   "dispatcher":"Диспетчер",
-  "Choose date to show log on that day": "Выберите дату для отображения сообщений в этот день"
+  "Choose date to show log on that day": "Выберите дату для отображения сообщений в этот день",
+  "Date": "Дата",
+  "Equipment": "Оборудование",
+  "Service": "Служба",
+  "DownTime": "Время простоя (мин)",
+  "Cause": "Причина",
+  "alarmLog": "Простои",
+  "mechanical": "Механослужба",
+  "electrical": "Электрослужба",
+  "energy": "Энергослужба",
+  "technological": "Технологи",
+  "User alarm created successfully": "Информация о простое внесена в базу"
 }

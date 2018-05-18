@@ -1,3 +1,4 @@
 // Register your apis here
-import '../../api/users/import.js';
-import '../../api/log/import.js';
+import '../../api/users/server/index.js';
+import '../../api/log/server/index.js';
+import '../../api/alarmlog/server/index.js';
