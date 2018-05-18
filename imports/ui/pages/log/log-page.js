@@ -2,7 +2,7 @@ import './log-page.html';
 
 Template.logPage.onCreated(function(){
     this.selectedDate = new ReactiveVar(moment().format('YYYY-MM-DD'));
-})
+});
 
 Template.logPage.helpers({
   getLinks(){

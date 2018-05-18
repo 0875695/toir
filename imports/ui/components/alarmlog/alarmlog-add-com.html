@@ -1,3 +1,11 @@
 <template name="alarmLogAddCom">
-  {{> quickForm collection=getAlarmLog id="alarmlogAddForm" type="insert" buttonContent=getSubmitButtonText }}
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="ibox">
+        <div class="ibox-content">
+          {{> quickForm collection=getAlarmLog id="alarmlogAddForm" type="insert" buttonContent=getSubmitButtonText }}
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
