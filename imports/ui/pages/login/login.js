@@ -1,4 +1,5 @@
 import './login.html';
+import {log} from '/imports/api/log';
 
 Template.login.onCreated(function(){
   if(Meteor.loggingIn() || Meteor.userId()){
@@ -13,10 +14,10 @@ Template.login.events({
     Meteor.loginWithPassword(login, password, function(err){
       if(err){
         toastr['error'](TAPi18n.__(err.reason), TAPi18n.__('Authentication error'))
-        console.log(err.reason)
+        log.error('[' + login + ',' + password + '] - ' + TAPi18n.__(err.reason));
       }else{
+        log.info('Пользователь вошёл в систему.')
         FlowRouter.go('App.home');
-        console.log('success')
       }
     })
   }
