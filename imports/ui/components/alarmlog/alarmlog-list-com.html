@@ -4,14 +4,17 @@
     <div class="row">
       <div class="ibox">
         <div class="ibox-title">
+
           <a href="/alarmlog/add" class="btn btn-white">
               <i class="fa fa-plus-square"></i> {{_ 'Add'}}
           </a>
+
+        
         </div>
         <div class="ibox-content">
 
           <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover dataTables" id="dataTables" >
+            <table class="table table-striped table-bordered table-hover" id="dataTables" >
               <thead>
                 <tr>
                   <th>{{_ 'Date'}}</th>
@@ -25,7 +28,7 @@
 
               {{#each getAlarmLog}}
                 <tr>
-                  <td >{{dateFormat date}}</td>
+                  <td>{{dateFormat date}}</td>
                   <td>{{equipment}}</td>
                   <td>{{_ service}}</td>
                   <td>{{downtime}}</td>
@@ -35,13 +38,13 @@
 
               </tbody>
               <tfoot>
-                <!-- <tr>
+                <tr>
                   <th>{{_ 'Date'}}</th>
                   <th>{{_ 'Equipment'}}</th>
                   <th>{{_ 'Service'}}</th>
                   <th>{{_ 'DownTime'}}</th>
                   <th>{{_ 'Cause'}}</th>
-                </tr> -->
+                </tr>
               </tfoot>
             </table>
           </div>

@@ -2,20 +2,19 @@ import './alarmlog-list-com.html';
 import { AlarmLog } from '../../../../imports/api/alarmlog';
 
 Template.alarmLogListCom.onCreated(function () {
-   this.subscribe('alarms.all');
-});
 
-// Template.alarmLogListCom.onRendered(function() {
-//    this.$(".datatable").DataTable();
-// });
+   this.subscribe('alarms.all');
+
+});
 
 Template.alarmLogListCom.rendered = function(){
 
-  $('.dataTables').DataTable({  
-    dom: '<"html5buttons"B>lTfgitp',
-    buttons: [
+  setTimeout(() => {
+    $('#dataTables').DataTable({
+      dom: '<"html5buttons"B>lTfgitp',
+      buttons: [
         {extend: 'copy'},
-        {extend: 'csv'},
+        // {extend: 'csv'},
         {extend: 'excel', title: 'ExampleFile'},
         {extend: 'pdf', title: 'ExampleFile'},
         {extend: 'print',
@@ -28,9 +27,9 @@ Template.alarmLogListCom.rendered = function(){
                     .css('font-size', 'inherit');
             }
         }
-    ]
-  });
-
+      ]
+    });
+  }, 50);
 };
 
 Template.alarmLogListCom.helpers({
@@ -39,5 +38,8 @@ Template.alarmLogListCom.helpers({
   },
   dateFormat(date) {
      return moment(date).format('DD-MM-YYYY');
+  },
+  ready() {
+    return Template.instance().subscriptionsReady();
   }
 });
