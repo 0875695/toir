@@ -1,8 +1,7 @@
-if(Meteor.users.find().length > 0) {
+if(Meteor.users.find().count() !== 0) {
 
   Accounts.validateNewUser(function (user) {
 
-    console.log(user);
     let loggedInUser = Meteor.user();
 
     if (Roles.userIsInRole(loggedInUser, ['admin'], 'toir')) {

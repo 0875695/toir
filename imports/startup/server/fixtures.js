@@ -8,7 +8,6 @@ Meteor.startup(() => {
       }
       var id;
 
-
          id = Accounts.createUser({
          email: user.email,
          password: 'Init123$',
@@ -16,7 +15,6 @@ Meteor.startup(() => {
             name: user.name
          }
       });
-
 
       if (user.roles.length > 0) {
          Roles.addUsersToRoles(id, user.roles, 'toir');
